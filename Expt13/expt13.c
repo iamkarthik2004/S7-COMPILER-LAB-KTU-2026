@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+void generate(char *e, char *ops, char *t){
+ int i, n, found;
+ while (1){
+ n = strlen(e);
+ found = 0;
+ for (i = 1; i < n - 1; i++){
+ if (strchr(ops, e[i])){
+ printf("\t\t%c := %c%c%c\n", *t, e[i - 1], e[i], e[i + 1]);
+ e[i - 1] = *t;
+ memmove(&e[i], &e[i + 2], n - i - 1);
+ (*t)--;
+ found = 1;
+ break;
+ }
+ }
+ if (!found)
+ break;
+ }
+}
+int main(){
+ char e[50], t = 'Z';
+ printf("\t\tINTERMEDIATE CODE GENERATION\n\n");
+ printf("Enter the Expression :");
+ scanf("%s", e);
+ char *p = strrchr(e, ':');
+ if (p)
+ strcpy(e, p + 1);
+ printf("The intermediate code:\n");
+ generate(e, "*/", &t);
+ generate(e, "+-", &t)
+   return 0;
+}
