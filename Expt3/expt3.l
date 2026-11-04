@@ -16,7 +16,7 @@ FILE *yyin;
                     lines++;
                }
 
-[^\t\n]+       {
+[^ \t\n]+       {
                     words++;
                     chars += yyleng;
                }
