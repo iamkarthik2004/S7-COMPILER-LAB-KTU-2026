@@ -17,10 +17,6 @@ stmt : ID '=' exp NL
      {
         printf("Valid Expression\n");
      }
-     | exp '=' ID NL
-     {
-        printf("Valid Expression\n");
-     }
      | exp NL
      {
         printf("Valid Expression\n");
